@@ -1,0 +1,17 @@
+numbers=[]
+uniques=[]
+index=1
+while True:
+    number=input(f"Enter an integer number{index}: ")
+    
+    if number=="" and index>10:
+        break
+    elif number=="":
+        continue
+    numbers.append(int(number))
+    if int(number) not in uniques:
+        uniques.append(int(number))
+    index=index+1
+
+print(numbers)
+print(uniques)
