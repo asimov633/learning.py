@@ -1,0 +1,13 @@
+def artikyillar():
+    yil=2020
+    while int(yil)>=1900:
+        yil-=1
+        
+        if (yil%4)==0 or ((yil%100)==0 and (yil%400==0)):
+            print(f"Artik Yil-{yil}")
+        else:
+            continue
+            
+            
+        
+artikyillar()
