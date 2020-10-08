@@ -1,56 +1,27 @@
 import sqlite3
-import random
-import datetime
-import time
+sql_connection=sqlite3.connect("StudyPlan.db")
+sql_cursor=sql_connection.cursor()
+
+def createtable():
+    sql_cursor.execute("CREATE TABLE StudyPlan (name TEXT, surname TEXT, age TEXT,lesson TEXT)")
+
+def appendtable():
+    sql_cursor.execute("INSERT INTO StudyPlan (name,surname,age,lesson) VALUES (?,?,?,?)",(name_sql,surname_sql,age_sql,lesson_sql))
+    sql_connection.commit()
 
 
 
-connect=sqlite3.connect("dersler.db")
+createtable()
+i=1
+#Enter how much increase you want.(i)
+while i<=4:
+    name_sql=input("Name{}: ".format(i))
+    surname_sql=input("Surname{}: ".format(i))
+    age_sql=input("Age{}: ".format(i))
+    lesson_sql=input("Lesson{}: ".format(i))
 
-cursor=connect.cursor()
-
-def tabloolustur():
-    cursor.execute("CREATE TABLE IF NOT EXISTS Tablo1 (zaman REAL,tarih TEXT,anahtarkelime TEXT,deger REAL)")
-
-def rastgeledegerekle():
-    zaman=time.time()
-    tarih=str(datetime.datetime.fromtimestamp(zaman).strftime('%Y-%m-%d $H:$M:$S'))
-    anahtarkelime="Pyhton SQLITE3"
-    deger=random.randrange(0,10)
-    cursor.execute("INSERT INTO Tablo1 (zaman,tarih,anahtarkelime,deger) VALUES(?,?,?,?)",(zaman,tarih,anahtarkelime,deger))
-    connect.commit()
-
-tabloolustur()
-
-i=0
-while i<10:
-    rastgeledegerekle()
-    time.sleep(1)
+    appendtable()
     i=i+1
 
-connect.close()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+print("Table Append is done")
 
